@@ -4,6 +4,12 @@ import shutil
 import paramiko
 
 def remove_subdirs():
+    names = [d for d in os.listdir('.') if os.path.isdir(d)]
+    print(f"Subdirectories to remove: {names}")
+    user = input("Are you sure you want to remove those subdirectories? y/n: ")
+    if user != "y":
+        print("Aborting.")
+        exit(0)
     for d in os.listdir('.'):
         if os.path.isdir(d):
             try:
